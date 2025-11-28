@@ -1,0 +1,5 @@
+{
+  "name": "Codeflow",
+  "description": "A secure, sandboxed remote code execution environment supporting multiple languages using real containerized toolchains. Features AI-assisted error analysis.",
+  "requestFramePermissions": []
+}

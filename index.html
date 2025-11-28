@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeFlow Compiler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Cinzel:wght@400;700&family=Fira+Code:wght@400;500&family=Orbitron:wght@400;700&family=Share+Tech+Mono&family=VT323&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <!-- PrismJS Theme for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+      /* Dynamic Theme Variables are injected via JS, but defaults are here */
+      :root {
+        --theme-bg-main: #0f172a;
+        --theme-bg-panel: #1e293b;
+        --theme-border: #334155;
+        --theme-text-main: #e2e8f0;
+        --theme-text-dim: #94a3b8;
+        --theme-accent: #3b82f6;
+        --theme-accent-hover: #2563eb;
+        --theme-font-ui: 'Inter', sans-serif;
+        --theme-font-code: 'JetBrains Mono', monospace;
+        --theme-radius: 0.5rem;
+        --theme-glow: none;
+      }
+
+      body {
+        font-family: var(--theme-font-ui);
+        background-color: var(--theme-bg-main);
+        color: var(--theme-text-main);
+        transition: background-color 0.5s ease, color 0.5s ease;
+      }
+      
+      /* Custom Scrollbar based on theme */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.2);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--theme-border);
+        border-radius: var(--theme-radius);
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--theme-text-dim);
+      }
+
+      .editor-container {
+        position: relative;
+        min-height: 100%;
+      }
+      .editor-layer {
+        font-family: var(--theme-font-code) !important;
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        padding: 1.5rem !important;
+        margin: 0 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        overflow: hidden;
+        white-space: pre !important;
+        word-wrap: normal !important;
+        box-sizing: border-box !important;
+        letter-spacing: normal !important;
+        background: transparent !important; /* Ensure pre doesn't have background from Prism */
+      }
+      .editor-textarea {
+        color: transparent !important;
+        background: transparent !important;
+        caret-color: var(--theme-text-main);
+        z-index: 1;
+        resize: none;
+        outline: none;
+        /* Re-enable overflow for textarea so it can scroll */
+        overflow: auto !important; 
+      }
+      .editor-highlight {
+        color: #fff; /* Prism default text color fallback */
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      /* Scanline effect for Retro Theme - Reduced Opacity for Clarity */
+      .scanlines::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+        z-index: 100;
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "prismjs/": "https://aistudiocdn.com/prismjs@^1.30.0/",
+    "prismjs": "https://aistudiocdn.com/prismjs@^1.30.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
